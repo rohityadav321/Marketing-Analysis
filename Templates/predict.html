@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block pclass %}
+active
+{% endblock %}
+{% block content%}
+<div class="content">
+    <div>
+        <h4>Enter the parameters below</h4>
+        <form action="{% url 'market:predict' %}" class="form" method="POST">
+            {% csrf_token %}
+            <select name="firm" id="firm">
+                <option value=0 disabled selected>--firm--</option>
+                <option name="1" value=1>1</option>
+                <option name="2" value=2>2</option>
+                <option name="3" value=3>3</option>
+                <option name="4" value=4>4</option>
+            </select>
+            <select name="area" id="area">
+                <option value="area" disabled selected> Area Of Marketing</option>
+                <option value=1 name="Urban">Urban</option>
+                <option value=0 name="Rural">Rural</option>
+            </select>
+            <input type="number" min="50000" required placeholder="Amount of Investement" name="investment">
+            <input type="number" min="10" required placeholder="Frequency" name="frequency">
+            <button type="submit" name="predict" id="button">Predict</button>
+        </form>
+    </div>
+    <div class="svg con2">
+        <img src="static\img\finance.svg" style="opacity: 0.3;" alt="">
+        <div>
+            <div class=" sur">
+                <h5>Do attend this survey
+                    to help Us to give more accurate results.</h5>
+                <a class="link" href="{% url 'market:survey' %}"><button id="button">Survey</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}

@@ -1,0 +1,289 @@
+:root {
+  --active: #2e62e8;
+  --normal: rgba(46, 98, 232, 0.37);
+  --brand: #000d87;
+  --nav: #c4c4c4;
+  --lightText: #000;
+  --darkText: #fff;
+  --lightBackground: rgb(213, 228, 230);
+  --darkBackground: rgb(58, 59, 59);
+  --darknavbar: rgb(4, 36, 36);
+  --darkbutton: #1f2452;
+  --darknavs: rgba(23, 56, 138, 0.473);
+  --darkactive: #12224b;
+}
+body {
+  background: var(--lightBackground);
+  color: #000;
+}
+.head {
+  width: 100vw;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
+.brand {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.brand > div {
+  padding: 0 20px;
+  margin: 0 10px;
+}
+.brand > div:nth-child(1) {
+  font-family: 2;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 69px;
+  text-align: center;
+  mix-blend-mode: darken;
+  backdrop-filter: blur(4px);
+}
+.brand > div > h3 > a {
+  text-decoration: none;
+  color: var(--brand);
+  background: #fff;
+}
+.rcye {
+  position: fixed;
+  width: 75px;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: var(--nav);
+}
+.rcye > ul > div:nth-child(1) {
+  list-style: none;
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  left: 0;
+  top: 0;
+  /* background: var(--normal); */
+}
+.active {
+  background: var(--active);
+}
+.rcye > ul > div > li {
+  width: 100%;
+  height: 100%;
+  background: var(--normal);
+}
+.rcye > ul > div:nth-child(2) {
+  list-style: none;
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  left: 0;
+  top: 75px;
+}
+.rcye > ul > div:nth-child(3) {
+  list-style: none;
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  left: 0;
+  top: 150px;
+}
+
+.rcye > ul > div:nth-child(4) {
+  list-style: none;
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  left: 0;
+  bottom: 0;
+}
+.icon {
+  position: absolute;
+  font-size: 45px;
+  left: 15px;
+  top: 15px;
+  color: black;
+}
+.rcye > ul > div > li:hover {
+  border: 1px solid black;
+}
+.content {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: -1;
+}
+.content > div {
+  width: 45%;
+  height: auto;
+  text-align: center;
+}
+.content > div > p:nth-child(1) {
+  position: relative;
+  width: 100%;
+  font-family: Stoke;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.content > div:nth-child(2) {
+  width: 40%;
+  margin: auto;
+}
+.content > div > p:nth-child(2) {
+  position: relative;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  width: 100%;
+}
+.content > div > a > button {
+  position: relative;
+  width: 150px;
+  height: 45px;
+  background: var(--active);
+  border-radius: 10px;
+  border: var(--brand);
+  /* overflow: hidden; */
+}
+.link {
+  color: var(--text);
+  text-decoration: none;
+}
+.content > div > a > button::after {
+  content: " ";
+  width: 25px;
+  height: 100%;
+  position: absolute;
+  left: -10%;
+  top: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+  display: none;
+  /* transition-delay: 0.5s; */
+}
+.content > div > a > button:hover:after {
+  left: 100%;
+  display: block;
+}
+
+.svg {
+  width: 20%;
+  height: auto;
+  z-index: -1;
+}
+.svg > img {
+  width: 100%;
+  height: auto;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  background: var(--nav);
+  z-index: -1;
+}
+/* darkmode toggle */
+.toggle {
+  position: absolute;
+  right: 10%;
+  top: 10px;
+  width: 40px;
+  height: 20px;
+}
+.toggle .mode {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.toggle .ovle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.toggle .ovle > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid black;
+  box-shadow: 0 0 5px #333;
+  background: var(--nav);
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+.toggle .ovle > div::after {
+  position: absolute;
+  content: " ";
+  width: 60%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 2px solid rgb(5, 182, 236);
+  box-shadow: 0 0 5px #333;
+  border-radius: 50%;
+  background: var(--active);
+  transition: all 0.5s;
+}
+.toggle .mode:checked + .ovle > div {
+  background: var(--text);
+}
+.toggle .mode:checked + .ovle > div::after {
+  left: 40%;
+}
+
+/* darkmode color */
+
+.darkmode {
+  background: var(--darkBackground);
+  color: var(--darkText);
+}
+.darkfooter {
+  background: var(--darknavbar);
+}
+.darkicon {
+  color: var(--darkText);
+}
+.darkbuttons {
+  background: var(--darkbutton);
+}
+.darkactive {
+  background: var(--darkactive);
+}
+.darknavbar {
+  background: var(--darknavbar);
+}
+.darknav {
+  background: var(--darknavs);
+}
+.darkval {
+  background: var(--darkBackground);
+}
+
+@media screen and (max-width: 650px) {
+}

@@ -1,0 +1,135 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredMark</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <link rel="stylesheet" href="{%static 'css/load.css' %}">
+    <link rel="stylesheet" href="{%static 'css/index.css' %}">
+    <link rel="stylesheet" href="{%static 'css/predict.css' %}">
+    <link rel="stylesheet" href="{%static 'css/team.css' %}">
+    <link rel="stylesheet" href="{%static 'css/survey.css' %}">
+    <link rel="stylesheet" href="{%static 'css/hamb.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+</head>
+
+<body>
+    <div class="main load">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="loading">loading...</div>
+    </div>
+    <div class="screen">
+        <div class=" head">
+            <div class="container">
+                <div class="header">
+                    <div class="brand">
+                        <div>
+                            <h3><a class="link" href="/">PredMark</a></h3>
+                        </div>
+                    </div>
+                    <div class="ham" id="toggler">
+                        <input type="checkbox" class="toggler" />
+                        <div class="hamb">
+                            <a class="link" href="#" title="{{ user.username }}">
+                                <span class="iconify" data-icon="bx:bx-user" data-inline="false"></span>
+                            </a>
+                        </div>
+                        <div class="section-flex-box ham-nav" id="nav">
+
+                            <div class="account nav">
+                                <div class="toggle nav"><input type="checkbox" id="check" onclick="modeToggle()"
+                                        name="mode" class="mode">
+                                    <div class="ovle">
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    {% if user.is_authenticated %}
+                                    <li>
+                                        <a href="#">{{user.username}}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'accounts:logout' %}">Logout</a>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <a href="{% url 'accounts:login' %}">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'accounts:signup' %}">Signup</a>
+                                    </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="rcye">
+                    <ul>
+                        <div class="{% block iclass %} {% endblock %} ">
+                            <li class="list" title="Home">
+                                <a class="link" href="/">
+                                    <span class="iconify icon" data-inline="false" data-icon="cil:home">
+                                    </span>
+                                </a>
+                            </li>
+                        </div>
+
+                        <div class="{% block pclass %} {% endblock %} ">
+                            <li class="list" title="Predict">
+                                <a href="{% url 'market:predict' %}" class="link"><span class="iconify icon"
+                                        data-inline="false" data-icon="ic:twotone-query-stats"></span></a>
+                            </li>
+                        </div>
+                        <div class="{% block sclass %} {% endblock %} ">
+                            <li class="list" title="Survey">
+                                <a href="{% url 'market:survey' %}" class="link"><span class="iconify icon"
+                                        data-inline="false" data-icon="bi:journal-text"></span></a>
+                            </li>
+                        </div>
+
+                        <div class="{% block tclass %} {% endblock %} ">
+                            <li class="list" title="Our Team">
+                                <a href="{% url 'market:team' %}" class="link"><span class="iconify icon"
+                                        data-inline="false" data-icon="fluent:people-team-20-regular"></span></a>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+
+                {% block content%}
+                {% endblock %}
+
+
+
+
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <span>Copyright &copy; PredMark Pvt Ltd</span>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="{%static 'Js/load.js' %}"></script>
+<script src="{%static 'Js/ind.js' %}"></script>
+
+
+
+</html>

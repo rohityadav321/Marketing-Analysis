@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div>
+            <div class="txt">
+                <h2>PredMark</h2>
+            </div>
+            <div class="login">
+                <div class="li">
+                    <div>
+                        <a href="signup" class="link  "><button style="background:rgb(235, 236, 241)">Sign
+                                up</button></a>
+                    </div>
+                    <div>
+                        <a href="login" class="link active"><button>Login</button></a>
+                    </div>
+                </div>
+
+                <form action="login" method="post" class="login_form">
+                    {% csrf_token %}
+                    <div class="input">
+                        <div>
+                            {% for message in messages %}
+                            <h6 style="color: rgb(0, 49, 141); font-weight: 50">{{ message }}</h6>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <div>
+                                <span class="iconify" data-icon="bx:bx-user" data-inline="false"></span>
+                                <input type="text" name="name" placeholder="Username" required>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <span class="iconify" data-icon="carbon:password" data-inline="false"></span>
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div>
+                            <span>Captcha:</span>
+                            <!-- <span class="captcha">{{img}}</span> -->
+
+                            <input id="captcha" type="text" name="value" value="{{img}}" readonly>
+
+                        </div>
+                        <div>
+                            <div>
+                                <input type="text" name="captcha" placeholder="Captcha" required>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="{% url 'accounts:forget' %}">Forget Password?</a>
+                        </div>
+                        <div class="submit">
+                            <input type="submit" value="Login" name="submit">
+                        </div>
+                    </div>
+                    {% if request.GET.next %}
+                    <div>
+                        <div>
+                            <input type="hidden" name="next" value="{{request.GET.next}}">
+                        </div>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

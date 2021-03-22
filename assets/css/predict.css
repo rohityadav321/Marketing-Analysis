@@ -1,0 +1,102 @@
+:root {
+  --active: #2e62e8;
+  --normal: rgba(46, 98, 232, 0.37);
+  --brand: #000d87;
+  --nav: #c4c4c4;
+  --text: #000;
+  --lightBackground: rgb(213, 228, 230);
+  --darkBackground: rgb(58, 59, 59);
+  --background: #96c7f0de;
+}
+.content > div > .form {
+  width: 100%;
+  height: auto;
+}
+.content > div > .form > select,
+.content > div > .form > input {
+  width: 80%;
+  margin: auto;
+  border: none;
+  outline: none;
+  border: 1px solid var(--background);
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin: 5px;
+  font-size: 20px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+select {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+button[type="submit"],
+.sur > a > button {
+  position: relative;
+  width: 150px;
+  height: 45px;
+  background: var(--active);
+  border-radius: 10px;
+  border: var(--brand);
+}
+.con2 > div {
+  position: absolute;
+  top: 30%;
+}
+button[type="submit"]::after,
+.sur > a > button::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 100%;
+  left: 0%;
+  top: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: 0.5s;
+  visibility: hidden;
+  /* transition-delay: 0.5s; */
+}
+button[type="submit"]:hover:after,
+.sur > a > button:hover::after {
+  left: 90%;
+  visibility: visible;
+}
+/* .progress {
+  width: 60%;
+  align-self: center;
+} */
+.val {
+  border: 1px solid var(--text);
+  margin: 5px;
+  border-radius: 10px;
+  background: blue;
+}
+.val > div {
+  border: 1px solid var(--text);
+  margin: 10px;
+  padding: 10px;
+  background: var(--lightBackground);
+}
+.result {
+  display: flex;
+  flex-wrap: wrap;
+}
+.result > div {
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+  width: 40%;
+}
+.progress {
+  background: #fff;
+}

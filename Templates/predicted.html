@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load django_template_maths %}
+{% block pclass %}
+active
+{% endblock %}
+{% block content %}
+<div class="content">
+
+    <div class="val">
+        {% if results %}
+        <div>
+            <h2>Predicted Profit</h2>
+            <div>
+                {% for variable , value in original.items %}
+                <h4>
+                    {{ variable }} : {{ value }}
+                </h4>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="result">
+            {% for var , val in results.items %}
+            <div>
+                <h4 style="color: rgb(55, 4, 97)  ;"><b>{{ var }}<br>Rs {{ val }} </b></h4>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemax={{profit}}
+                        style="width:{{ val|div:profit|mul:100 }}%">
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+
+
+    <div class="svg con2">
+        <img src="static\img\finance.svg" style="opacity: 0.3;" alt="">
+        <div>
+            <div class=" sur">
+                <h5>Do attend this survey
+                    to help Us to give more accurate results.</h5>
+                <a class="link" href="survey"><button id="button">Survey</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}

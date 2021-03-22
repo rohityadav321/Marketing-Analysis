@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div>
+            <div class="txt">
+                <h2>PredMark</h2>
+            </div>
+            <div class="login">
+                <div class="li">
+                    <h4 class="forget">
+                        Forget Password
+                    </h4>
+                </div>
+                <form action="{% url 'accounts:update' %}" class="login_form" method="POST">
+                    {% csrf_token %}
+
+                    <div class="input">
+                        <div>
+                            {% for message in messages %}
+                            <h6 style="color: rgb(0, 49, 141); font-weight: 50">{{ message }}</h6>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <div>
+                                <span class="iconify" data-icon="bx:bx-user" data-inline="false"></span>
+                                <input type="text" name="email" placeholder="Email" value="{{username}}" required>
+                            </div>
+                        </div>
+                        {% if username %}
+                        <div>
+                            <div>
+                                <span class="iconify" data-icon="carbon:password" data-inline="false"></span>
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <span class="iconify" data-icon="carbon:password" data-inline="false"></span>
+                                <input type="password" name="conf_pass" placeholder="Confirm Password" required>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="submit">
+                            <input type="submit" value="submit" name="submit">
+                        </div>
+                    </div>
+                </form>
+                {% if request.GET.next %}
+                <div>
+                    <div>
+                        <input type="hidden" name="next" value="{{request.GET.next}}">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
